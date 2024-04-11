@@ -73,6 +73,20 @@ function insertPet($name = NULL, $age = NULL, $species = NULL, $breed = NULL, $d
     $stmt->close();
 }
 
+/* update (edit) pet */
+function updatePet($name = NULL, $age = NULL, $species = NULL, $breed = NULL, $description = NULL, $petid = NULL){
+    global $mysqli;
+    $stmt = $mysqli->prepare('UPDATE pets SET name = ?, age = ?, species = ?, breed = ?, description = ? WHERE petid = ?');
+    $stmt->bind_param('sisssi', $name, $age, $species, $breed, $description, $petid);
+    $stmt->execute();
+    if($stmt->affected_rows === 0):
+        echo 'You did not make any changes';
+    else:
+        echo 'Successfully updated the selected pet';
+    endif;
+    $stmt->close();
+}
+
 /* ====================== USER AUTHENTICATION ==================== */
 
 /* create user */

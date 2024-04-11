@@ -21,13 +21,15 @@ include('includes/functions.php');
                 <?php $pets = selectAllPets();
                 foreach ($pets as $pet) { ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="<?php echo $pet['image_url']; ?>" class="card-img-top" alt="Pet">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $pet['name']; ?></h5>
-                                <p class="card-text"><?php echo $pet['description']; ?></p>
+                        <a href="pet.php?id=<?php echo $pet['petid']; ?>" class="card-link-custom">
+                            <div class="card">
+                                <img src="<?php echo $pet['image_url']; ?>" class="card-img-top" alt="Pet">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $pet['name']; ?></h5>
+                                    <p class="card-text"><?php echo $pet['description']; ?></p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
