@@ -7,15 +7,14 @@
 4. Adopter can submit application for pet in database.
 5. Shelter can view and approve or reject application for pet in database.
 
-### Database Design:
-#### Users Table:
+## Database Design:
+### Users Table:
 + UserID: INT, Auto-increment, Primary Key
 + Username: VARCHAR(255), Unique
 + Password: VARCHAR(255) (hashed version?)
-+ Email: VARCHAR(255), Unique
 + UserType: ENUM('adopter', 'shelter')
 + CreatedAt: DATETIME
-#### Pets Table:
+### Pets Table:
 + PetID: INT, Auto-increment, Primary Key
 + ShelterID: INT, Foreign Key referencing UserID in Users table (ensure UserType is shelter)
 + Name: VARCHAR(255)
@@ -25,7 +24,7 @@
 + Description: TEXT (optional additional information about pet)
 + Status: ENUM('available', 'adopted')
 + CreatedAt: DATETIME
-#### Applications Table:
+### Applications Table:
 + ApplicationID: INT, Auto-increment, Primary Key
 + PetID: INT, Foreign Key referencing PetID in Pets table
 + AdopterID: INT, Foreign Key referencing UserID in Users table (ensure UserType is adopter)
