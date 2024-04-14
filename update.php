@@ -5,6 +5,12 @@
     if (isset($_POST['btnUpdate'])) :
         updatePet($_POST['name'], $_POST['age'], $_POST['species'], $_POST['breed'], $_POST['description'], $_GET['id']);
     endif;
+    
+    if (isset($_POST['btnDelete'])) :
+        deletePet($_GET['id']);
+        header('Location: shelter.php');
+    endif;
+
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +69,7 @@
                     </div>
                 </div>
                 <button name="btnUpdate" class="btn btn-primary">Update Pet</button>
+                <button name="btnDelete" class="btn btn-danger">Delete Pet</button>
                 </form>  
             </div>
         </div>

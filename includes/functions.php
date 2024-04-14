@@ -42,11 +42,11 @@ function selectPet($id = NULL) {
 }
 
 /* select pets by shelter */
-function selectMyPets($id = NULL){
+function selectMyPets($shelterid = NULL){
     global $mysqli;
     $data = array();
     $stmt = $mysqli->prepare('SELECT * FROM pets WHERE shelterid = ?');
-    $stmt->bind_param('i', $id);
+    $stmt->bind_param('i', $shelterid);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
@@ -85,6 +85,17 @@ function updatePet($name = NULL, $age = NULL, $species = NULL, $breed = NULL, $d
         echo 'Successfully updated the selected pet';
     endif;
     $stmt->close();
+}
+
+/* delete pet */
+function deletePet($petid){
+    global $mysqli;
+    $stmt = $mysqli->prepare('DELETE FROM pets WHERE petid =?');
+    $stmt->bind_param('i', $petid);
+    $stmt->execute();
+    $stmt->close();
+    echo 'Successfully deleted the pet';
+    exit();
 }
 
 /* ====================== USER AUTHENTICATION ==================== */
