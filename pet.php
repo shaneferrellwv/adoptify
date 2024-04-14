@@ -15,7 +15,26 @@ include('includes/functions.php');
 <body>
     <?php include('theme/header.php'); ?>
     
-    <h2>Pet Details</h2>
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <h2>Pet Details</h2>
+            <?php
+                $pet = selectPet($_GET['id']);
+            ?>
+            
+            <div class="card">
+                <img src="<?php echo $pet['image_url']; ?>" class="card-img-top" alt="Pet">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $pet['name']; ?></h5>
+                    <p class="card-text"><?php echo $pet['age']; ?></p>
+                    <p class="card-text"><?php echo $pet['species']; ?></p>
+                    <p class="card-text"><?php echo $pet['breed']; ?></p>
+                    <p class="card-text"><?php echo $pet['description']; ?></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
     <h2>Adoption Application</h2>
