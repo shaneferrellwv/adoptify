@@ -98,6 +98,24 @@ function deletePet($petid){
     exit();
 }
 
+/* ====================== APPLICATIONS ==================== */
+
+/* insert */
+function insertApplication($name = NULL, $numPets = NULL, $phone = NULL, $email = NULL, $address = NULL, $visit = NULL, $info = NULL, $petid = NULL, $userid = NULL){
+    global $mysqli;
+    $status = 'pending';
+    $stmt = $mysqli->prepare('INSERT INTO applications (petid, adopterid, status, phone, email, address, info, name, number_of_pets, visit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->bind_param('iissssssis', $petid, $userid, $status, $phone, $email, $address, $info, $name, $numPets, $visit);
+    if ($stmt->execute()) {
+        echo 'Successfully submitted application';
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+}
+
+
+
 /* ====================== USER AUTHENTICATION ==================== */
 
 /* create user */
