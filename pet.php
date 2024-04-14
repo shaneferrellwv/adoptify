@@ -30,10 +30,10 @@ endif;
                      style="max-width:300px;max-height:500px;width:auto;height:auto;">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $pet['name']; ?></h5>
-                    <p class="card-text"><?php echo $pet['age']; ?></p>
-                    <p class="card-text"><?php echo $pet['species']; ?></p>
-                    <p class="card-text"><?php echo $pet['breed']; ?></p>
-                    <p class="card-text"><?php echo $pet['description']; ?></p>
+                    <p class="card-text">Age: <?php echo $pet['age']; ?></p>
+                    <p class="card-text">Species: <?php echo $pet['species']; ?></p>
+                    <p class="card-text">Breed: <?php echo $pet['breed']; ?></p>
+                    <p class="card-text">Additional Information: <?php echo $pet['description']; ?></p>
                 </div>
             </div>
         </div>

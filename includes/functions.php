@@ -114,7 +114,24 @@ function insertApplication($name = NULL, $numPets = NULL, $phone = NULL, $email 
     $stmt->close();
 }
 
-
+/* select applications by adopter */
+function selectSubmittedApplications($userid = NULL){
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT * FROM applications WHERE adopterid = ?');
+    $stmt->bind_param('i', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows === 0):
+        echo 'You have no submitted applications';
+    else:
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+    endif;
+    $stmt->close();
+    return $data;
+}
 
 /* ====================== USER AUTHENTICATION ==================== */
 
