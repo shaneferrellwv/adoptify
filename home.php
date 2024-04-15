@@ -22,6 +22,8 @@
     <br>
     <a href="browse.php">Browse Pets</a>
     <br>
+    <a href="profile.php">Adopter Home</a>
+    <br>
     <a href="shelter.php">Shelter Home</a>
     <br>
     <a href="logout.php">Log Out</a>
