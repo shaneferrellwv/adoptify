@@ -24,8 +24,8 @@
     <?php include('theme/header.php'); ?>
     <div class='container-fluid'>
 
-        <h2>Your Pets for Adoption</h2>
         <div class="container mt-5">
+            <h2>Your Pets for Adoption</h2>
             <div class="row">
                 <?php $myPets = selectMyPets($_SESSION['user']['id']);
                 foreach ($myPets as $pet) { ?>
@@ -44,61 +44,65 @@
             </div>
         </div>
 
-        <h2>Review Applications</h2>
-        <div class="card">
-            <div class="card-body">
-
+        <div class="container mt-5">
+            <h2>Review Applications</h2>
+            <div class="card">
+                <div class="card-body">
+                    
+                </div>
             </div>
         </div>
         
-        <h2>List a Pet</h2>
-        <div class="card">
-            <div class="card-body">
-                <form action="" method="post" class="form" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" value="">
-                        <br>
+        <div class="container mt-5">
+            <h2>List a Pet</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="post" class="form" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" value="">
+                            <br>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="age">Age</label>
+                            <input type="number" name="age" id="age" class="form-control" value="" min="0">
+                            <br>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="age">Age</label>
-                        <input type="number" name="age" id="age" class="form-control" value="" min="0">
-                        <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="species">Species</label>
+                            <select name="species" id="species" class="form-control">
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="bird">Bird</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="breed">Breed</label>
+                            <input type="text" name="breed" id="breed" class="form-control" value="">
+                            <br>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" class="form-control" value=""></textarea>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" id="image">
+                            <br>
+                        </div>
+                    </div>
+                    <button name="btnInsert" class="btn btn-primary">Insert Record</button>
+                    </form>  
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="species">Species</label>
-                        <select name="species" id="species" class="form-control">
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="bird">Bird</option>
-                        </select>
-                        <br>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="breed">Breed</label>
-                        <input type="text" name="breed" id="breed" class="form-control" value="">
-                        <br>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" value=""></textarea>
-                        <br>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="image">Image</label>
-                        <input type="file" name="image" id="image">
-                        <br>
-                    </div>
-                </div>
-                <button name="btnInsert" class="btn btn-primary">Insert Record</button>
-                </form>  
             </div>
         </div>
     </div>

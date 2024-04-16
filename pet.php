@@ -46,12 +46,12 @@ endif;
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="name"> Adopter's Full Name</label>
-                                <input type="text" name="name" id="name" class="form-control" value="">
+                                <input type="text" name="name" id="name" class="form-control" value="" required>
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <label for="numPets">Number of Pets in Household</label>
-                                <input type="number" name="numPets" id="numPets" class="form-control" value="" min="0">
+                                <input type="number" name="numPets" id="numPets" class="form-control" value="" min="0" required>
                                 <br>
                             </div>
                         </div>
@@ -63,19 +63,19 @@ endif;
                             </div>
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control" value="">
+                                <input type="text" name="email" id="email" class="form-control" value="" required>
                                 <br>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="info">Address</label>
-                                <input type="text" name="address" id="address" class="form-control" value="">
+                                <input type="text" name="address" id="address" class="form-control" value="" required>
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <label for="info">Visit Date</label>
-                                <input type="date" id="visit" name="visit" class="form-control" >
+                                <input type="date" id="visit" name="visit" class="form-control" required>
                                 <br>
                             </div>
                         </div>
