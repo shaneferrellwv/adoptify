@@ -3,7 +3,7 @@
 <?php
 include('includes/functions.php');
 if (isset($_POST['btnSubmit'])) :
-    insertApplication($_POST['name'], $_POST['numPets'], $_POST['phone'], $_POST['email'], $_POST['address'], $_POST['visit'], $_POST['info'], $_GET['id'],  $_SESSION['user']['id']);
+    insertApplication($_POST['name'], $_POST['numPets'], $_POST['phone'], $_POST['email'], $_POST['address'], $_POST['visit'], $_POST['info'], $_GET['id'],  $_SESSION['user']['id'], $_POST['shelterid']);
 endif;
 ?>
 
@@ -43,6 +43,7 @@ endif;
             <div class="card">
                 <div class="card-body">
                     <form action="" method="post" class="form" enctype="multipart/form-data">
+                        <input type="hidden" name="shelterid" id="shelterid" value="<?php echo $pet['shelterid']; ?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="name"> Adopter's Full Name</label>
