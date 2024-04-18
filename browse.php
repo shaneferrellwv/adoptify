@@ -33,8 +33,8 @@ include('includes/functions.php');
 <body>
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
-        <h1>Browse Pets</h1>
         <div class="container mt-5">
+            <h1>Browse Pets</h1>
             <div class="row">
                 <?php $pets = selectAllPets();
                 foreach ($pets as $pet) { ?>
