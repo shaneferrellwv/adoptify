@@ -22,29 +22,29 @@
 
             <h2>My Applications</h2>
             <table class="table">
-            <thead>
-                <tr>
-                    <th>Pet</th>
-                    <th>Submission</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $myApplications = selectSubmittedApplications($_SESSION['user']['id']);
-                foreach ($myApplications as $app) {
-                    $pet = selectPet($app['petid']);
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($pet['name']) . "</td>";
-                    echo "<td>" . htmlspecialchars($app['createdat']) . "</td>";
-                    echo "<td>" . htmlspecialchars($app['status']) . "</td>";
-                    echo "<td><button class='btn btn-primary'>View Details</button></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th>Pet</th>
+                        <th>Submission</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $myApplications = selectSubmittedApplications($_SESSION['user']['id']);
+                    foreach ($myApplications as $app) {
+                        $pet = selectPet($app['petid']);
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($pet['name']) . "</td>";
+                        echo "<td>" . htmlspecialchars($app['createdat']) . "</td>";
+                        echo "<td>" . htmlspecialchars($app['status']) . "</td>";
+                        echo "<td><button class='btn btn-primary'>View Details</button></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
 
 
         </div>

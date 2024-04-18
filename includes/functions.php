@@ -98,6 +98,58 @@ function deletePet($petid){
     exit();
 }
 
+/* ====================== APPLICATIONS ==================== */
+
+/* insert */
+function insertApplication($name = NULL, $numPets = NULL, $phone = NULL, $email = NULL, $address = NULL, $visit = NULL, $info = NULL, $petid = NULL, $userid = NULL, $shelterid = NULL){
+    global $mysqli;
+    $status = 'pending';
+    $stmt = $mysqli->prepare('INSERT INTO applications (petid, adopterid, status, phone, email, address, info, name, number_of_pets, visit, shelterid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->bind_param('iissssssisi', $petid, $userid, $status, $phone, $email, $address, $info, $name, $numPets, $visit, $shelterid);
+    if ($stmt->execute()) {
+        echo 'Successfully submitted application';
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+}
+
+/* select applications by adopter */
+function selectSubmittedApplications($userid = NULL){
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT * FROM applications WHERE adopterid = ?');
+    $stmt->bind_param('i', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows === 0):
+        echo 'You have no submitted applications';
+    else:
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+    endif;
+    $stmt->close();
+    return $data;
+}
+
+/* select applications by shelter */
+function selectMyApplications($userid = NULL){
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT * FROM applications WHERE shelterid = ?');
+    $stmt->bind_param('i', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows > 0):
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+    endif;
+    $stmt->close();
+    return $data;
+}
+
 /* ====================== USER AUTHENTICATION ==================== */
 
 /* create user */

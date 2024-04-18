@@ -34,7 +34,7 @@ include('includes/functions.php');
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
         <div class="container mt-5">
-            <h1>Browse Pets</h1>
+        <h1>Browse Pets</h1>
             <div class="row">
                 <?php $pets = selectAllPets();
                 foreach ($pets as $pet) { ?>
