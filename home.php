@@ -14,20 +14,37 @@
 </head>
 <body>
     <?php include('theme/header.php'); ?>
-    <h1>Home Page</h1>
-    <br>
-    <a href="login.php">Log In</a>
-    <br>
-    <a href="signup.php">Sign Up</a>
-    <br>
-    <a href="browse.php">Browse Pets</a>
-    <br>
-    <a href="profile.php">Adopter Home</a>
-    <br>
-    <a href="shelter.php">Shelter Home</a>
-    <br>
-    <a href="logout.php">Log Out</a>
-    <br>
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <h1>Home Page</h1>
+            <br>
+            <a href="login.php">Log In</a>
+            <br>
+            <a href="signup.php">Sign Up</a>
+            <br>
+            <a href="browse.php">Browse Pets</a>
+            <br>
+            <a href="profile.php">Adopter Home</a>
+            <br>
+            <a href="shelter.php">Shelter Home</a>
+            <br>
+            <a href="logout.php">Log Out</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
     <?php include('theme/footer.php'); ?>
 </body>
 </html>
