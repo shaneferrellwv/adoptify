@@ -74,5 +74,7 @@
             </div>
         </div>
     </div>
+    <br>
+    <?php include('theme/footer.php'); ?>
 </body>
 </html>
