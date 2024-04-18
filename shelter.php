@@ -2,6 +2,7 @@
 
 <?php
     include('includes/functions.php');
+
     if (isset($_POST['btnInsert'])) :
         $target_path = "uploads/" . basename($_FILES["image"]["name"]);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_path)) :
@@ -66,7 +67,7 @@
                                 echo "<td>" . htmlspecialchars($pet['name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($app['createdat']) . "</td>";
                                 echo "<td>" . htmlspecialchars($app['status']) . "</td>";
-                                echo "<td><button class='btn btn-primary'>View Details</button></td>";
+                                echo "<td><button name='btnDetails' class='btn btn-primary'>View Details</button></td>";
                                 echo "</tr>";
                             }
                             ?>
