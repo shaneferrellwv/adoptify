@@ -67,7 +67,7 @@
                                 echo "<td>" . htmlspecialchars($pet['name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($app['createdat']) . "</td>";
                                 echo "<td>" . htmlspecialchars($app['status']) . "</td>";
-                                echo "<td><button name='btnDetails' class='btn btn-primary'>View Details</button></td>";
+                                echo "<td><a href='application.php?id=" . $app['applicationid'] . "'><button name='btnDetails' class='btn btn-primary'>View Details</button></a></td>";
                                 echo "</tr>";
                             }
                             ?>

@@ -114,6 +114,18 @@ function insertApplication($name = NULL, $numPets = NULL, $phone = NULL, $email 
     $stmt->close();
 }
 
+/* select single application */
+function selectApplication($id = NULL) {
+    global $mysqli;
+    $stmt = $mysqli->prepare('SELECT * FROM applications WHERE applicationid = ?');
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row;
+}
+
 /* select applications by adopter */
 function selectSubmittedApplications($userid = NULL){
     global $mysqli;
