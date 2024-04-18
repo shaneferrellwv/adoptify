@@ -84,5 +84,7 @@
         <p>Don't have an account? <a href="signup.php">Sign up here</a>.</p>
     </div>
     </div>
+    <br>
+    <?php include('theme/footer.php'); ?>
 </body>
 </html>

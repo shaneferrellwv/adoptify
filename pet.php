@@ -14,29 +14,108 @@ endif;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoptify - Pet Details</title>
     <?php include('theme/scripts.php'); ?>
+    <style>
+        /* Add some custom styles to align items with flexbox */
+        .card-custom {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+        .card-img-container {
+            flex: 0 0 auto; /* Do not grow or shrink */
+        }
+        .card-body {
+            flex: 1; /* Take up remaining space */
+            padding-left: 20px; /* Add some spacing between image and text */
+        }
+        .card-img-top {
+            max-width: 300px; /* Maximum width for the image */
+            max-height: 300px; /* Maximum height for the image */
+            width: auto; /* Maintain aspect ratio */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Add some space between the image and the details */
+        }
+        .info-container {
+            padding-left: 100px;
+        }
+        .centered-container {
+            display: flex;
+            justify-content: center; /* This centers the card horizontally */
+            margin-top: 20px;
+        }
+
+        .pet-details-card {
+            width: 100%; /* You may want to set a max-width here */
+            /*border: 1px solid #ccc; /* This adds a border like the application form */
+            /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* This adds a shadow similar to the form */
+            /*margin-bottom: 20px;
+            padding: 20px; /* This adds some padding inside the card */
+        }
+
+        .pet-details-content {
+            display: flex;
+            justify-content: space-around; /* This will space out the image and details */
+            align-items: center;
+        }
+
+        .pet-info {
+            flex-basis: 50%; /* Adjust this as necessary to give more space to text or image */
+        }
+
+        .pet-image {
+            flex-basis: 50%; /* Adjust this as necessary */
+            text-align: right; /* This centers the image within its flex item */
+        }
+
+        .pet-image img {
+            max-width: 300px;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .pet-details-content {
+                flex-direction: column; /* Stack image and details on smaller screens */
+            }
+
+            .pet-info, .pet-image {
+                flex-basis: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php include('theme/header.php'); ?>
-    
-    <div class="container-fluid">
+
         <div class="container mt-5">
-            <h2>Pet Details</h2>
-            <?php
-                $pet = selectPet($_GET['id']);
-            ?>
-            
-            <div class="card">
-                <img src="<?php echo $pet['image_url']; ?>" class="card-img-top" alt="Pet" 
-                     style="max-width:300px;max-height:500px;width:auto;height:auto;">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $pet['name']; ?></h5>
-                    <p class="card-text">Age: <?php echo $pet['age']; ?></p>
-                    <p class="card-text">Species: <?php echo $pet['species']; ?></p>
-                    <p class="card-text">Breed: <?php echo $pet['breed']; ?></p>
-                    <p class="card-text">Additional Information: <?php echo $pet['description']; ?></p>
+        <?php $pet = selectPet($_GET['id']); ?>
+        
+        <h2>Pet Details</h2>
+        <br><br>
+        <div class="centered-container">
+            <div class="pet-details-card">
+                <div class="pet-details-content">
+                    <!-- Information container -->
+                    <div class="pet-info">
+                        <h5 class="card-title"><?php echo $pet['name']; ?></h5>
+                        <p class="card-text">Age: <?php echo $pet['age']; ?></p>
+                        <p class="card-text">Species: <?php echo $pet['species']; ?></p>
+                        <p class="card-text">Breed: <?php echo $pet['breed']; ?></p>
+                        <p class="card-text">Characteristic: <?php echo $pet['description']; ?></p>
+                        <p class="card-text">Health: <?php echo $pet['age']; ?></p>
+                    </div>
+                    <!-- Image container -->
+                    <div class="pet-image">
+                        <img src="<?php echo $pet['image_url']; ?>" class="card-img-top" alt="Pet" 
+                            style="max-width:300px;max-height:500px;width:auto;height:auto;">
+                    </div>
                 </div>
             </div>
         </div>
+        
+    </div>
         
         <div class="container mt-5">
             <h2>Adoption Application</h2>
@@ -92,5 +171,7 @@ endif;
             </div>
         </div>
     </div>
+    <br>
+    <?php include('theme/footer.php'); ?>
 </body>
 </html>

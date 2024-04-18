@@ -102,5 +102,7 @@
             <a href="login.php">Cancel</a>
         </div>
     </div>
+    <br>
+    <?php include('theme/footer.php'); ?>
 </body>
 </html>

@@ -12,3 +12,21 @@ nav ul li {
     display:inline-block;
     margin-left:2rem;
 }
+
+html, body {
+    height: 100%; /* Needed to make the sticky footer work */
+    margin: 0; /* Override default margin */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+.content {
+    flex: 1 0 auto; /* Stretch the content to fill the space */
+}
+
+.footer {
+    flex-shrink: 0; /* Ensure footer does not shrink */
+}
