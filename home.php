@@ -29,20 +29,6 @@
             <a href="shelter.php">Shelter Home</a>
             <br>
             <a href="logout.php">Log Out</a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
         </div>
     </div>
     <?php include('theme/footer.php'); ?>
