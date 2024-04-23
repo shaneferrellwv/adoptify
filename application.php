@@ -2,6 +2,14 @@
 
 <?php
     include('includes/functions.php');
+
+    if (isset($_POST['btnApprove'])) :
+        approveApplication($_POST['applicationid'], $_POST['feedback']);
+    endif;
+
+    if (isset($_POST['btnReject'])) :
+        rejectApplication($_POST['applicationid'], $_POST['feedback']);
+    endif;
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +57,7 @@
                 <div class="card-body">
 
                     <form action="" method="post" class="form" enctype="multipart/form-data">
-                        <input type="hidden" name="shelterid" id="shelterid" value="<?php echo $app['applicationid']; ?>">
+                        <input type="hidden" name="applicationid" id="applicationid" value="<?php echo $app['applicationid']; ?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="name"> Adopter's Full Name</label>
@@ -90,6 +98,13 @@
                             <div class="col-md-12">
                                 <label for="info">Additional Information</label>
                                 <textarea name="info" id="info" class="form-control" readonly><?php echo $app['info']; ?></textarea>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="feedback">Feedback</label>
+                                <textarea name="feedback" id="feeback" class="form-control"><?php echo $app['feedback']; ?></textarea>
                                 <br>
                             </div>
                         </div>

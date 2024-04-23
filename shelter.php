@@ -124,7 +124,7 @@
                             <br>
                         </div>
                     </div>
-                    <button name="btnInsert" class="btn btn-primary">Insert Record</button>
+                    <button name="btnInsert" class="btn btn-primary">List My Pet</button>
                     </form>  
                 </div>
             </div>

@@ -29,6 +29,6 @@
         </ul>
     </div>
 </nav>
-Welcome, <?php echo $_SESSION['user']['username'];
-            echo $_SESSION['user']['id']; ?>
+<!-- Welcome, <?php echo $_SESSION['user']['username'];
+            echo $_SESSION['user']['id']; ?> -->
 </header>

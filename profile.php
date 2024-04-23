@@ -27,7 +27,7 @@
                         <th>Pet</th>
                         <th>Submission</th>
                         <th>Status</th>
-                        <th></th>
+                        <th>Feedback</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@
                         echo "<td>" . htmlspecialchars($pet['name']) . "</td>";
                         echo "<td>" . htmlspecialchars($app['createdat']) . "</td>";
                         echo "<td>" . htmlspecialchars($app['status']) . "</td>";
-                        echo "<td><button class='btn btn-primary'>View Details</button></td>";
+                        echo "<td>" . htmlspecialchars($app['feedback']) . "</td>";
                         echo "</tr>";
                     }
                     ?>
