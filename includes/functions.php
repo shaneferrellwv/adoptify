@@ -15,7 +15,7 @@ function formatcode($arr){
 function selectAllPets(){
     global $mysqli;
     $data = array();
-    $stmt = $mysqli->prepare('SELECT * FROM pets');
+    $stmt = $mysqli->prepare('SELECT * FROM pets WHERE status = "available"');
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
@@ -45,8 +45,29 @@ function selectPet($id = NULL) {
 function selectMyPets($shelterid = NULL){
     global $mysqli;
     $data = array();
-    $stmt = $mysqli->prepare('SELECT * FROM pets WHERE shelterid = ?');
-    $stmt->bind_param('i', $shelterid);
+    $status = 'available';
+    $stmt = $mysqli->prepare('SELECT * FROM pets WHERE shelterid = ? AND status = ?');
+    $stmt->bind_param('is', $shelterid, $status);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows === 0):
+        echo 'There are currently no pets in the table with your Shelter ID';
+    else:
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+    endif;
+    $stmt->close();
+    return $data;
+}
+
+/* select pets by shelter */
+function selectMyAdoptedPets($shelterid = NULL){
+    global $mysqli;
+    $data = array();
+    $status = 'adopted';
+    $stmt = $mysqli->prepare('SELECT * FROM pets WHERE shelterid = ? AND status = ?');
+    $stmt->bind_param('is', $shelterid, $status);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
@@ -114,6 +135,18 @@ function insertApplication($name = NULL, $numPets = NULL, $phone = NULL, $email 
     $stmt->close();
 }
 
+/* select single application */
+function selectApplication($id = NULL) {
+    global $mysqli;
+    $stmt = $mysqli->prepare('SELECT * FROM applications WHERE applicationid = ?');
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row;
+}
+
 /* select applications by adopter */
 function selectSubmittedApplications($userid = NULL){
     global $mysqli;
@@ -148,6 +181,72 @@ function selectMyApplications($userid = NULL){
     endif;
     $stmt->close();
     return $data;
+}
+
+/* update application */
+
+/* approve */
+function approveApplication($id, $feedback = NULL) {
+    global $mysqli;
+    $status = 'approved';
+    $stmt = $mysqli->prepare('UPDATE applications SET status = ?, feedback = ? WHERE applicationid = ?');
+    $stmt->bind_param('ssi', $status, $feedback, $id);
+    if ($stmt->execute()) {
+        echo 'Successfully approved application';
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+
+    // get petid
+    $stmt = $mysqli->prepare('SELECT petid FROM applications WHERE applicationid = ?');
+    $stmt->bind_param('i', $id);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $petid = $row['petid'];
+        }
+    }
+    $stmt->close();
+
+    // set pet as adopted
+    $status = 'adopted';
+    $stmt = $mysqli->prepare('UPDATE pets SET status = ? WHERE petid = ?');
+    $stmt->bind_param('si', $status, $petid);
+    $stmt->execute();
+    $stmt->close();
+}
+
+/* reject */
+function rejectApplication($id, $feedback = NULL) {
+    global $mysqli;
+    $status = 'rejected';
+    $stmt = $mysqli->prepare('UPDATE applications SET status = ?, feedback = ? WHERE applicationid = ?');
+    $stmt->bind_param('ssi', $status, $feedback, $id);
+    if ($stmt->execute()) {
+        echo 'Successfully rejected application';
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+
+    // get petid
+    $stmt = $mysqli->prepare('SELECT petid FROM applications WHERE applicationid = ?');
+    $stmt->bind_param('i', $id);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $petid = $row['petid'];
+        }
+    }
+    $stmt->close();
+
+    // set pet as available
+    $status = 'available';
+    $stmt = $mysqli->prepare('UPDATE pets SET status = ? WHERE petid = ?');
+    $stmt->bind_param('si', $status, $petid);
+    $stmt->execute();
+    $stmt->close();
 }
 
 /* ====================== USER AUTHENTICATION ==================== */
