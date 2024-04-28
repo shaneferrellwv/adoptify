@@ -134,8 +134,10 @@ function logInUser($username = NULL, $password = NULL) {
         if(password_verify($password, $hash)):
             $_SESSION['user']['id'] = $row['userid'];
             $_SESSION['user']['username'] = $row['username'];
+            return true;
         else:
             echo 'Your username or password is incorrect. Please try again.';
+            return false;
         endif;
     }
     $stmt->close();

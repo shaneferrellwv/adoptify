@@ -5,7 +5,10 @@
     if(isset($_POST['btnLogIn'])):
         $username = $_POST['username'];
         $password = $_POST['password'];
-        logInUser($username, $password);
+        if (logInUser($username, $password)) {
+            header("Location: home.php");
+            exit();
+        }
     endif;
 ?>
 
