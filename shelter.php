@@ -4,12 +4,17 @@
     include('includes/functions.php');
 
     if (isset($_POST['btnInsert'])) :
-        $target_path = "uploads/" . basename($_FILES["image"]["name"]);
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_path)) :
-            insertPet($_POST['name'], $_POST['age'], $_POST['species'], $_POST['breed'], $_POST['description'], $target_path, $_SESSION['user']['id']);
-        else:
-            echo "Sorry, there was an error uploading your file.";
-        endif;
+        $target_path = "uploads/";
+        $file_name = $_FILES["image"]["name"];
+        if ($file_name) {
+            $target_path .= basename($file_name);
+            if (!move_uploaded_file($_FILES["image"]["tmp_name"], $target_path)) {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            $target_path .= "dogdefault.png";
+        }
+        insertPet($_POST['name'], $_POST['age'], $_POST['species'], $_POST['breed'], $_POST['description'], $target_path, $_SESSION['user']['id']);
     endif;
 ?>
 

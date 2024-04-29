@@ -305,6 +305,7 @@ function logInUser($username = NULL, $password = NULL) {
             $_SESSION['user']['usertype'] = $row['usertype'];
         else:
             echo 'Your username or password is incorrect. Please try again.';
+            return false;
         endif;
     }
     $stmt->close();
