@@ -20,6 +20,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoptify - Shelter Profile</title>
     <?php include('theme/scripts.php'); ?>
+    <style>
+        /* Add your CSS styles here */
+        .card-img-top {
+            width: 100%; /* Make the image responsive to the container width */
+            height: 350px; /* Fixed height for all images */
+            object-fit: cover; /* Cover the container without stretching the image */
+            object-position: center; /* Center the image within the element's box */
+        }
+        /* Further styling for cards to ensure consistent look */
+        .card {
+            height: 100%; /* Make sure all cards are the same height */
+            display: flex;
+            flex-direction: column; /* Stack the card content vertically */
+        }
+        .card-body {
+            flex-grow: 1; /* Allow the card body to fill the space and push the footer down */
+        }
+    </style>
 </head>
 <body>
     <?php include('theme/header.php'); ?>
