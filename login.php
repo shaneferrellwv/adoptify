@@ -71,7 +71,7 @@
     <div id="form-wrapper">
     <div class="card">
         <h1>Log In</h1>
-        <form action="" method="post" class="register">
+        <form method="post" class="register">
             <div>
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" class="form-control">

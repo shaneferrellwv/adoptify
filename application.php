@@ -56,7 +56,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="" method="post" class="form" enctype="multipart/form-data">
+                    <form method="post" class="form" enctype="multipart/form-data">
                         <input type="hidden" name="applicationid" id="applicationid" value="<?php echo $app['applicationid']; ?>">
                         <div class="row">
                             <div class="col-md-6">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="species">Phone</label>
+                                <label for="phone">Phone</label>
                                 <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $app['phone']; ?>" readonly>
                                 <br>
                             </div>
@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="feedback">Feedback</label>
-                                <textarea name="feedback" id="feeback" class="form-control"><?php echo $app['feedback']; ?></textarea>
+                                <textarea name="feedback" id="feedback" class="form-control"><?php echo $app['feedback']; ?></textarea>
                                 <br>
                             </div>
                         </div>

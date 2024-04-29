@@ -104,7 +104,7 @@
             <h2>List a Pet</h2>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post" class="form" enctype="multipart/form-data">
+                    <form method="post" class="form" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Name</label>
@@ -136,7 +136,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control" value=""></textarea>
+                            <textarea name="description" id="description" class="form-control"></textarea>
                             <br>
                         </div>
                     </div>

@@ -33,7 +33,7 @@
                         $pet = selectPet($_GET['id']);
                     ?>
 
-                    <form action="" method="post" class="form" enctype="multipart/form-data">
+                    <form method="post" class="form" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Name</label>
@@ -50,9 +50,9 @@
                         <div class="col-md-6">
                             <label for="species">Species</label>
                             <select name="species" id="species" class="form-control">
-                                <option values="dog" <?php echo ($pet['species'] == 'dog') ? 'selected' : ''; ?>>dog</option>
-                                <option values="cat" <?php echo ($pet['species'] == 'cat') ? 'selected' : ''; ?>>cat</option>
-                                <option values="bird" <?php echo ($pet['species'] == 'bird') ? 'selected' : ''; ?>>bird</option>
+                                <option value="dog" <?php echo ($pet['species'] == 'dog') ? 'selected' : ''; ?>>dog</option>
+                                <option value="cat" <?php echo ($pet['species'] == 'cat') ? 'selected' : ''; ?>>cat</option>
+                                <option value="bird" <?php echo ($pet['species'] == 'bird') ? 'selected' : ''; ?>>bird</option>
                             </select>
                             <br>
                         </div>

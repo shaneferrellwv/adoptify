@@ -27,7 +27,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: center;
             padding-top: 60px; /* Adjust this if your header is taller or shorter */
         }
         .card {
@@ -81,7 +80,7 @@
     <div id="form-wrapper">
         <div class="card">
             <h1>Register</h1>
-            <form action="" method="post" class="register">
+            <form method="post" class="register">
                 <div>
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" class="form-control">
