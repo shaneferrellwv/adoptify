@@ -119,6 +119,23 @@ function deletePet($petid){
     exit();
 }
 
+function getPetCarousel() {
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT name, description, image_url FROM pets');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $pets = [];
+    while ($row = $result->fetch_assoc()) {
+        $pets[] = [
+            'image_url' => $row['image_url'],
+            'name' => $row['name'],
+            'description' => $row['description']
+        ];
+    }
+    return $pets;
+}
+
 /* ====================== APPLICATIONS ==================== */
 
 /* insert */
