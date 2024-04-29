@@ -12,7 +12,7 @@
                 echo "Sorry, there was an error uploading your file.";
             }
         } else {
-            $target_path .= "dogdefault.png";
+            $target_path .= "logo.png";
         }
         insertPet($_POST['name'], $_POST['age'], $_POST['species'], $_POST['breed'], $_POST['description'], $target_path, $_SESSION['user']['id']);
     endif;
