@@ -119,6 +119,23 @@ function deletePet($petid){
     exit();
 }
 
+function getPetCarousel() {
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT name, description, image_url FROM pets');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $pets = [];
+    while ($row = $result->fetch_assoc()) {
+        $pets[] = [
+            'image_url' => $row['image_url'],
+            'name' => $row['name'],
+            'description' => $row['description']
+        ];
+    }
+    return $pets;
+}
+
 /* ====================== APPLICATIONS ==================== */
 
 /* insert */
@@ -285,11 +302,7 @@ function logInUser($username = NULL, $password = NULL) {
         if(password_verify($password, $hash)):
             $_SESSION['user']['id'] = $row['userid'];
             $_SESSION['user']['username'] = $row['username'];
-            $_SESSION['fullname'] = $fullname;
-            $_SESSION['phone'] = $phone;
-            $_SESSION['email'] = $email;
-            $_SESSION['address'] = $address;
-            return true;
+            $_SESSION['user']['usertype'] = $row['usertype'];
         else:
             echo 'Your username or password is incorrect. Please try again.';
             return false;
