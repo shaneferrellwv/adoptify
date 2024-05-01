@@ -104,7 +104,6 @@ endif;
                         <p class="card-text">Species: <?php echo $pet['species']; ?></p>
                         <p class="card-text">Breed: <?php echo $pet['breed']; ?></p>
                         <p class="card-text">Characteristic: <?php echo $pet['description']; ?></p>
-                        <p class="card-text">Health: <?php echo $pet['age']; ?></p>
                     </div>
                     <!-- Image container -->
                     <div class="pet-image">
