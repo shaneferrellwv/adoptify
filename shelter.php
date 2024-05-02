@@ -1,7 +1,15 @@
 #!/usr/local/bin/php
 
 <?php
-    include('includes/functions.php');
+   include('includes/functions.php');
+
+   session_start();
+
+   // Check if the user is logged in and if they are a shelter
+   if (!isset($_SESSION['loggedin']) || $_SESSION['user']['usertype'] != 'shelter') {
+       header('Location: home.php'); // Redirect to home page
+       exit; // Ensure no further code is executed
+   }
 
     if (isset($_POST['btnInsert'])) :
         $target_path = "uploads/";
@@ -41,6 +49,9 @@
         }
         .card-body {
             flex-grow: 1; /* Allow the card body to fill the space and push the footer down */
+        }
+        .btn-primary{
+            margin-top:10px
         }
     </style>
 </head>
