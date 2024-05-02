@@ -12,10 +12,18 @@ function formatcode($arr){
 /* ========================= PET ACTIONS ======================= */
 
 /* select all */
-function selectAllPets(){
+function selectAllPets($search = null){
     global $mysqli;
     $data = array();
-    $stmt = $mysqli->prepare('SELECT * FROM pets WHERE status = "available"');
+    $sql = 'SELECT * FROM pets WHERE status = "available"';
+    if ($search) {
+        $sql .= ' AND name LIKE ?';
+    }
+    $stmt = $mysqli->prepare($sql);
+    if ($search) {
+        $search = "%$search%";
+        $stmt->bind_param('s', $search);
+    }
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
