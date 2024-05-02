@@ -311,6 +311,7 @@ function logInUser($username = NULL, $password = NULL) {
             $_SESSION['user']['id'] = $row['userid'];
             $_SESSION['user']['username'] = $row['username'];
             $_SESSION['user']['usertype'] = $row['usertype'];
+            $_SESSION['loggedin'] = true;
             return true;
         else:
             echo 'Your username or password is incorrect. Please try again.';
